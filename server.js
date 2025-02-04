@@ -26,7 +26,7 @@ db.connect(err => {
     }
 });
 
-// Handle form submission
+// form submission
 app.post("/api/calculate", (req, res) => {
     const { num1, num2 } = req.body;
 
@@ -45,9 +45,9 @@ app.post("/api/calculate", (req, res) => {
 });
 
 
-// Fetch the last entry and hash it
+// Fetch last entry
 app.get("/api/hash-latest", (req, res) => {
-    const query = "SELECT num1, num2 FROM numbers ORDER BY id DESC LIMIT 1"; // Get the last inserted row
+    const query = "SELECT num1, num2 FROM numbers ORDER BY id DESC LIMIT 1";
 
     db.query(query, (err, result) => {
         if (err) {
@@ -60,7 +60,7 @@ app.get("/api/hash-latest", (req, res) => {
         }
 
         const { num1, num2 } = result[0];
-        const concatenated = `${num1}${num2}`; // Concatenating num1 and num2 as a string
+        const concatenated = `${num1}${num2}`;
 
         // Hash the concatenated string using SHA-256
         const hash = crypto.createHash("sha256").update(concatenated).digest("hex");

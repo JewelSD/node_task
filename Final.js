@@ -9,7 +9,7 @@ const PORT = 3000;
 
 // Middleware
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(express.static(path.join(__dirname, "temp"))); // Serve HTML files
+app.use(express.static(path.join(__dirname, "temp"))); //HTML files
 
 // MySQL Connection
 const db = mysql.createConnection({
@@ -27,7 +27,7 @@ db.connect(err => {
     }
 });
 
-// ✅ Single Endpoint Handling Both POST & GET
+
 app.all("/api/calculate", (req, res) => {
     if (req.method === "POST") {
         // Store numbers in MySQL
