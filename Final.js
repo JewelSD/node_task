@@ -11,7 +11,7 @@ const PORT = 3000;
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "temp"))); //HTML files
 
-// MySQL Connection
+// MySQL Connections
 const db = mysql.createConnection({
     host: "localhost",
     user: "root",
