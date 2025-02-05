@@ -67,13 +67,15 @@ app.all("/api/calculate", (req, res) => {
             // Hash the concatenated string using SHA-256
             const hash = crypto.createHash("sha256").update(concatenated).digest("hex");
 
-            res.send(`Concatenated: ${concatenated} <br> SHA-256 Hash: ${hash}`);
+            res.send(`<!-- Concatenated: ${concatenated} <br> SHA-256--> Hash: ${hash}`);
         });
 
     } else {
         res.status(405).send("Method Not Allowed");
     }
 });
+
+
 
 // Start the server
 app.listen(PORT, () => {
