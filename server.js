@@ -12,12 +12,21 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "temp"))); //HTML files
 
 // MySQL Connections
+// const db = mysql.createConnection({
+//     host: "localhost",
+//     user: "root",
+//     password: "",
+//     database: "node_db"
+// });
+
+
 const db = mysql.createConnection({
-    host: "localhost",
-    user: "root",
-    password: "",
-    database: "node_db"
+    host: process.env.DB_HOST || "host.docker.internal", // Connect to XAMPP MySQL
+    user: process.env.DB_USER || "root",
+    password: process.env.DB_PASSWORD || "",
+    database: process.env.DB_NAME || "node_db"
 });
+
 
 db.connect(err => {
     if (err) {
